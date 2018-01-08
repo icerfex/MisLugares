@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     /*metodo listener que lo que hace es mostrar un objeto cuadro de dialogo con una seria de texto*/
     /*se crea un objeto Vista anonimos para esta clase*/
      /*se crea un cuadro de dialogo en esta clase*/
-     /*recupero el dato de entrada del cuadro de dialogo y ya que es entero lo convierto en texto y paso a id*/
+     /*recupero el dato de entrada del cuadro de dialogo y ya que es entero lo convierto en texto y paso a id
+     * ---------------------------------------------------------------*/
     public void lanzarVistaLugar(View v){
 
         final EditText entrada=new EditText(MainActivity.this);
