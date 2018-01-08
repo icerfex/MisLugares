@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.nextsofts.mislugares">
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <!-- el Launcher significa que esta actividad es la que va arrancar primero... -->
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- mis nuevas actividades -->
+
+        <activity
+                android:name=".VistaLugar"
+                android:label="Vista Lugar">
+        </activity>
+        <activity
+                android:name=".EdicionLugar"
+                android:label="Editar Lugar">
+        </activity>
+    </application>
+
+</manifest>
