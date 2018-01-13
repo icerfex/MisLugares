@@ -12,7 +12,7 @@
                 android:id="@+id/nombre"
                 android:gravity="center"
                 android:textSize="25dp"
-                android:text="nombre del lugar"
+                android:text="nombre lugar"
                 android:layout_height="wrap_content"/>
         <LinearLayout
                 android:layout_width="match_parent"
