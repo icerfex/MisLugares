@@ -27,7 +27,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:id="@+id/tipo"
-                    android:text="tipo de lugar"
+                    android:text="tipo lugar"
                     android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
