@@ -15,7 +15,7 @@ import android.widget.ListView;
 /*su clase base de la clse MainActivity es la clase ListActivity*/
 
 public class MainActivity extends AppCompatActivity {
-   public AdaptadorLugares adaptador;
+   //public AdaptadorLugares adaptador;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(i);
                     }
                 })
-        .setNegativeButton("cancelar",null).show();
+                .setNegativeButton("cancelar",null).show();
     }
 
     /*este metodo dispone de tres parametros el listview que se a pulsado la vista pulsada dentro de este listview

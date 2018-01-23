@@ -5,19 +5,18 @@
             android:layout_height="match_parent">
     <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content" android:orientation="vertical">
         <TextView
                 android:layout_width="match_parent"
                 android:id="@+id/nombre"
                 android:gravity="center"
                 android:textSize="25dp"
                 android:text="nombre lugar"
-                android:layout_height="wrap_content"/>
+                android:layout_height="0dp" android:layout_weight="1"/>
         <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp" android:layout_weight="1">
             <ImageView
                     android:layout_width="40dp"
                     android:id="@+id/LogoTipo"
@@ -33,7 +32,7 @@
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp" android:layout_weight="1">
             <ImageView
                     android:layout_width="40dp"
                     android:src="@android:drawable/ic_menu_directions"
@@ -47,7 +46,7 @@
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp" android:layout_weight="1">
             <ImageView
                     android:layout_width="40dp"
                     android:src="@android:drawable/ic_menu_call"
@@ -61,7 +60,7 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp" android:layout_weight="1">
             <ImageView
                     android:layout_width="40dp"
                     android:src="@android:drawable/ic_menu_mapmode"
@@ -75,7 +74,7 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp" android:layout_weight="1">
             <ImageView
                     android:layout_width="40dp"
                     android:src="@android:drawable/ic_menu_info_details"
@@ -89,7 +88,7 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp" android:layout_weight="1">
             <ImageView
                     android:layout_width="40dp"
                     android:src="@android:drawable/ic_menu_my_calendar"
@@ -103,7 +102,7 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp" android:layout_weight="1">
             <ImageView
                     android:layout_width="40dp"
                     android:src="@android:drawable/ic_menu_recent_history"
@@ -119,10 +118,10 @@
                 android:id="@+id/valoracion"
                 android:layout_gravity="center_horizontal"
                 android:rating="3"
-                android:layout_height="wrap_content"/>
+                android:layout_height="0dp" android:layout_weight="1"/>
         <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp" android:layout_weight="1">
             <ImageView
                     android:layout_width="wrap_content"
                     android:id="@+id/foto"
@@ -134,16 +133,14 @@
                     android:layout_gravity="right"
                     android:layout_height="wrap_content">
                 <ImageView
-                        android:id="@+id/logo_galeria"
-                        android:onClick="galeria"
                         android:layout_width="40dp"
-                        android:contentDescription="Logo galeria"
-                        android:src="@android:drawable/ic_menu_gallery"
+                        android:contentDescription="Logo camara"
+                        android:src="@android:drawable/ic_menu_camera"
                         android:layout_height="40dp"/>
                 <ImageView
                         android:layout_width="40dp"
-                        android:contentDescription="camara"
-                        android:src="@android:drawable/ic_menu_camera"
+                        android:contentDescription="logo galeria"
+                        android:src="@android:drawable/ic_menu_gallery"
                         android:layout_height="40dp"/>
             </LinearLayout>
         </FrameLayout>

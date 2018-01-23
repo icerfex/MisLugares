@@ -1,14 +1,19 @@
 package com.nextsofts.mislugares;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class VistaLugar extends AppCompatActivity {
     /*declaracion de atributo para contener un nro entero de longitud grande*/
@@ -25,19 +30,35 @@ public class VistaLugar extends AppCompatActivity {
     TextView comentario;
     TextView fecha;
     TextView hora;
+
+
+    private ImageView imageView;
+    public final static  int RESULTADO_EDITAR=1;
+    public final static  int RESULTADO_GALERIA=2;
+    public final static int RESULTADO_FOTO=3;
+
     @TargetApi(24)
     @Override
     protected void onCreate(Bundle guardarestado){
         super.onCreate(guardarestado);
         setContentView(R.layout.vista_lugar);
-        /*recuperando datos desde el objeto VistaLugar*/
+        /*recuperando datos desde el cuadro de dialogo de la clase MainActivity*/
         Bundle extras=getIntent().getExtras();
         id =extras.getLong("id");
-        /*recuperando un objeto del vector por medio de su id.*/
         lugar=Lugares.elemento((int)id);
-
+        imageView=(ImageView) findViewById(R.id.foto);
         actualizarVistas();
     }
+
+
+    public void galeria(View view){
+      Intent i=new Intent(Intent.ACTION_GET_CONTENT);
+        i.addCategory(Intent.CATEGORY_OPENABLE);
+        i.setType("image/*");
+        startActivityForResult(i,RESULTADO_GALERIA);
+    }
+
+
     /*metodos para poder inflar menus en la barra de acciones*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -62,19 +83,36 @@ public class VistaLugar extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    /*metodo que nos permite navegar de esta actividad a otra actividad*/
+    /*metodo que nos permite navegar de esta actividad a otra actividad para esto nos tenemos que preguntar
+    * que necesito para editar un elemento de un grupo de elementos pues su identificador la misma le mandamos por medio
+    * de la inension con el metodo putExtra()*/
     public void lanzarEdicionLugar(){
         Intent i=new Intent(VistaLugar.this,EdicionLugar.class);
         i.putExtra("id",(long) id);
         startActivityForResult(i,1234);
     }
     @Override
+    /*con el metodo actualizarVistas() lo que se queiere lograr es refrscar la vista del iu*/
     protected void onActivityResult(int requestCode,int resultCode,Intent data){
-       if(requestCode==1234){
+       if(requestCode==RESULTADO_EDITAR){
            actualizarVistas();
-           findViewById(R.id.scrollView1).invalidate();
+           //findViewById(R.id.scrollView1).invalidate();
+       }else if(requestCode==RESULTADO_GALERIA && resultCode== Activity.RESULT_OK){
+           lugar.setFoto(data.getDataString());
+           ponerFoto(imageView,lugar.getFoto());
+           Log.d("l","hola");
        }
     }
+
+    protected void ponerFoto(ImageView imageView,String uri){
+        if(uri!=null){
+            imageView.setImageURI(Uri.parse(uri));
+        }else{
+            imageView.setImageBitmap(null);
+        }
+    }
+
+
 
     public void actualizarVistas(){
        /*asignacion de objetos View a los atributos declarados anteriormente*/
@@ -106,5 +144,7 @@ public class VistaLugar extends AppCompatActivity {
                         lugar.setValoracion(v);
                     }
                 });
+
+        ponerFoto(imageView,lugar.getFoto());
     }
 }
