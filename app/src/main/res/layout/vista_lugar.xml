@@ -142,6 +142,7 @@
                         android:layout_height="40dp"/>
                 <ImageView
                         android:layout_width="40dp"
+                        android:onClick="tomarFoto"
                         android:contentDescription="camara"
                         android:src="@android:drawable/ic_menu_camera"
                         android:layout_height="40dp"/>

@@ -4,6 +4,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
 
 public class VistaLugar extends AppCompatActivity {
     /*declaracion de atributo para contener un nro entero de longitud grande*/
@@ -37,6 +41,8 @@ public class VistaLugar extends AppCompatActivity {
     public final static  int RESULTADO_GALERIA=2;
     public final static int RESULTADO_FOTO=3;
 
+    private Uri urifoto;
+
     @TargetApi(24)
     @Override
     protected void onCreate(Bundle guardarestado){
@@ -48,6 +54,13 @@ public class VistaLugar extends AppCompatActivity {
         lugar=Lugares.elemento((int)id);
         imageView=(ImageView) findViewById(R.id.foto);
         actualizarVistas();
+    }
+
+    public void tomarFoto(View view){
+        Intent i=new Intent("android.media.action.IMAGE_CAPTURE");
+        urifoto=Uri.fromFile(new File(Environment.getExternalStorageDirectory()+ File.separator+"img_"+(System.currentTimeMillis()/1000)+"jpg"));
+        i.putExtra(MediaStore.EXTRA_OUTPUT,urifoto);
+        startActivityForResult(i,RESULTADO_FOTO);
     }
 
 
@@ -101,6 +114,9 @@ public class VistaLugar extends AppCompatActivity {
            lugar.setFoto(data.getDataString());
            ponerFoto(imageView,lugar.getFoto());
            Log.d("l","hola");
+       }else if(requestCode==RESULTADO_FOTO&&resultCode==Activity.RESULT_OK&&lugar!=null&&urifoto!=null){
+         lugar.setFoto(urifoto.toString());
+           ponerFoto(imageView,lugar.getFoto());
        }
     }
 
